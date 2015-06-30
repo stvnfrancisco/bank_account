@@ -1,73 +1,56 @@
-function BankAccount(firstName,lastName,balance){
-  this.firstName = firstName;
-  this.lastName = lastName;
-  this.balance = balance;
-}
+var BankAccount = {
+  balance: 0,
 
-Contact.prototype.fullName = function() {
-  return this.firstName + " " + this.lastName;
-}
+  withdraw: function(amount) {
+    this.balance = this.balance - amount;
+  },
+  deposit: function(amount) {
+    this.balance = this.balance + amount;
+  },
 
-
-
-function resetFields(){
-  $("input#new-first-name").val("");
-  $("input#new-last-name").val("");
-  $("input#new-balance").val("");c  
+};
 
 $(document).ready(function() {
-  $("#add-address").click(function() {
-    $("#new-addresses").append('<div class="new-address">' +
-                                 '<div class="form-group">' +
-                                   '<label for="new-street">Street</label>' +
-                                   '<input type="text" class="form-control new-street">' +
-                                 '</div>' +
-                                 '<div class="form-group">' +
-                                   '<label for="new-city">City</label>' +
-                                   '<input type="text" class="form-control new-city">' +
-                                 '</div>' +
-                                 '<div class="form-group">' +
-                                   '<label for="new-state">State</label>' +
-                                   '<input type="text" class="form-control new-state">' +
-                                 '</div>' +
-                               '</div>');
-  });
 
-  $("form#new-contact").submit(function(event) {
+  var newBankAccount = Object.create(BankAccount)
+
+  $("form#signup").submit(function(event){
+    var inputtedName = $("input#name").val();
+    var initialBalance = parseInt($("input#initial").val());
+    isNaN(initialBalance) ? initialBalance = 0 : initialBalance = initialBalance;
+    newBankAccount.owner = inputtedName
+    newBankAccount.deposit(initialBalance)
+
+
+    $("input#name").val("");
+    $("input#initial").val("");
+
+    $("#banking").show();
+    $("#status").show();
+
+    $(".balance").text(newBankAccount.balance)
+
     event.preventDefault();
-
-    var inputtedFirstName = $("input#new-first-name").val();
-    var inputtedLastName = $("input#new-last-name").val();
-    var inputtedPhoneNumber = $("input#new-phone-number").val();
-
-    var newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
-
-    $(".new-address").each(function() {
-      var inputtedStreet = $(this).find("input.new-street").val();
-      var inputtedCity = $(this).find("input.new-city").val();
-      var inputtedState = $(this).find("input.new-state").val();
-
-      var newAddress = new Address(inputtedStreet, inputtedCity, inputtedState)
-      newContact.addresses.push(newAddress);
-    });
-
-    $("ul#contacts").append("<li><span class='contact'>" + newContact.fullName() + "</span></li>");
-
-    $(".contact").last().click(function() {
-      $("#show-contact").show();
-
-      $("#show-contact h2").text(newContact.fullName());
-      $(".first-name").text(newContact.firstName);
-      $(".last-name").text(newContact.lastName);
-      $(".phone-number").text(newContact.phoneNumber);
-
-      $("ul#addresses").text("");
-
-      newContact.addresses.forEach(function(address) {
-        $("ul#addresses").append("<li>" + address.fullAddress() + "</li>");
-      });
-    });
-
-    resetFields();
   });
+
+  $("form#depositwithdraw").submit(function(event){
+    var depositAmount = parseInt($("input#deposit").val());
+    var withdrawalAmount = parseInt($("input#withdraw").val());
+    isNaN(depositAmount) ? depositAmount = 0 : depositAmount = depositAmount;
+    isNaN(withdrawalAmount) ? withdrawalAmount = 0 : withdrawalAmount = withdrawalAmount;
+
+    newBankAccount.withdraw(withdrawalAmount);
+    newBankAccount.deposit(depositAmount);
+
+    $("input#deposit").val("");
+    $("input#withdraw").val("");
+
+    $("#banking").show();
+    $("#status").show();
+
+    $(".balance").text(newBankAccount.balance)
+
+    event.preventDefault();
+  });
+
 });

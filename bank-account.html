@@ -8,57 +8,38 @@
     <title>Bank Account</title>
   </head>
   <body>
-    <div class="container">
+    <div id="container">
       <h1>Bank Account</h1>
 
-      <div class="row">
-        <div class="col-md-6">
-          <h2>Sign up for a bank account:</h2>
-          <form id="new-contact">
-            <div class="form-group">
-              <label for="new-first-name">First name</label>
-              <input type="text" class="form-control" id="new-first-name">
-            </div>
-            <div class="form-group">
-              <label for="new-last-name">Last name</label>
-              <input type="text" class="form-control" id="new-last-name">
-            </div>
-            <div class="form-group">
-              <label for="new-deposit">deposit</label>
-              <input type="text" class="form-control" id="new-deposit">
-            </div>
-            <div class="form-group">
-              <label for="new-withdraw">withdraw</label>
-              <input type="text" class="form-control" id="new-withdraw">
-            </div>
-            <div class="form-group">
-              <label for="new-balance">balance</label>
-              <input type="text" class="form-control" id="new-balance">
-            </div>
-          </div>
-        </div>
+      <div id="signup">
+        <h4>Sign up for a bank account:</h4>
+        <form id="signup">
+          <input id="name" name="name" placeholder="Your name" required>
 
-            <button type="submit" class="btn">Add</button>
-          </form>
+          <input id="initial" name="initial" placeholder="Initial deposit" required>
 
-          <h2>Contacts:</h2>
-          <ul id="contacts">
+          <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+      </div>
 
-          </ul>
-        </div>
+      <div id="banking">
+        <h4>Deposit or withdraw money:</h4>
+        <form id="depositwithdraw">
+          <label for="deposit">Deposit:</label>
+          <input id="deposit" name="deposit">
+          <button type="submit" class="btn btn-warning">See New Balance</button>
+          <br>
+          <br>
+          <label for="withdraw">Withdraw:</label>
+          <input id="withdraw" name="withdraw">
 
-        <div class="col-md-6">
-          <div id="show-contact">
-            <h2></h2>
+          <button type="submit" class="btn btn-warning">See New Balance</button>
+        </form>
+      </div>
 
-            <p><strong>First name:</strong> <span class="first-name"></span></p>
-            <p><strong>Last name:</strong> <span class="last-name"></span></p>
-            <p><strong>Deposit:</strong> <span class="deposit"></span></p>
-            <p><strong>Withdraw:</strong> <span class="withdraw"></span></p>
-            <p><strong>Balance:</strong> <span class="balance"></span></p>
-
-          </div>
-        </div>
+      <div id="status">
+        <h3>Here is your new balance:</h3>
+          <strong>$</strong><span class="balance"></span>
       </div>
     </div>
   </body>

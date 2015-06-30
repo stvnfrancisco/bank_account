@@ -15,14 +15,16 @@ $(document).ready(function() {
   var newBankAccount = Object.create(BankAccount)
 
   $("form#signup").submit(function(event){
-    var inputtedName = $("input#name").val();
+    var inputtedFirstName = $("input#first-name").val();
+    var inputtedLastName = $("input#last-name").val();
     var initialBalance = parseInt($("input#initial").val());
     isNaN(initialBalance) ? initialBalance = 0 : initialBalance = initialBalance;
-    newBankAccount.owner = inputtedName
+    newBankAccount.owner = inputtedFirstName, inputtedLastName
     newBankAccount.deposit(initialBalance)
 
 
-    $("input#name").val("");
+    $("input#first-name").val("");
+    $("input#last-name").val("");
     $("input#initial").val("");
 
     $("#banking").show();

@@ -19,7 +19,7 @@ $(document).ready(function() {
     var inputtedLastName = $("input#last-name").val();
     var initialBalance = parseInt($("input#initial").val());
     isNaN(initialBalance) ? initialBalance = 0 : initialBalance = initialBalance;
-    newBankAccount.owner = inputtedFirstName, inputtedLastName;
+    newBankAccount.owner = inputtedFirstName + " " + inputtedLastName;
     newBankAccount.deposit(initialBalance);
 
     $("input#first-name").val("");
@@ -32,7 +32,7 @@ $(document).ready(function() {
     $(".balance").text(newBankAccount.balance);
     $(".first-name").text(newBankAccount.owner);
     $(".last-name").text(newBankAccount.owner);
-    
+
     event.preventDefault();
   });
 

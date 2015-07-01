@@ -1,4 +1,5 @@
 describe("BankAccount", function() {
+
   describe("balance", function() {
     it("will start at 0", function() {
       var newAccount = Object.create(BankAccount);
@@ -20,6 +21,6 @@ describe("BankAccount", function() {
       newAccount.withdraw(10);
       expect(newAccount.balance).to.equal(-10);
     });
-
   });
+
 });

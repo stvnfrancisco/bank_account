@@ -12,16 +12,15 @@ var BankAccount = {
 
 $(document).ready(function() {
 
-  var newBankAccount = Object.create(BankAccount)
+  var newBankAccount = Object.create(BankAccount);
 
   $("form#signup").submit(function(event){
     var inputtedFirstName = $("input#first-name").val();
     var inputtedLastName = $("input#last-name").val();
     var initialBalance = parseInt($("input#initial").val());
     isNaN(initialBalance) ? initialBalance = 0 : initialBalance = initialBalance;
-    newBankAccount.owner = inputtedFirstName, inputtedLastName
-    newBankAccount.deposit(initialBalance)
-
+    newBankAccount.owner = inputtedFirstName, inputtedLastName;
+    newBankAccount.deposit(initialBalance);
 
     $("input#first-name").val("");
     $("input#last-name").val("");
@@ -30,8 +29,10 @@ $(document).ready(function() {
     $("#banking").show();
     $("#status").show();
 
-    $(".balance").text(newBankAccount.balance)
-
+    $(".balance").text(newBankAccount.balance);
+    $(".first-name").text(newBankAccount.owner);
+    $(".last-name").text(newBankAccount.owner);
+    
     event.preventDefault();
   });
 
@@ -50,7 +51,9 @@ $(document).ready(function() {
     $("#banking").show();
     $("#status").show();
 
-    $(".balance").text(newBankAccount.balance)
+    $(".balance").text(newBankAccount.balance);
+    $(".first-name").text(newBankAccount.owner);
+    $(".last-name").text(newBankAccount.owner);
 
     event.preventDefault();
   });

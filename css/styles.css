@@ -1,3 +1,7 @@
 body {
-  background-color: #8daf95;
+	background:url(../images/blue-bg.png);
+}
+
+html {
+  text-align: center;
 }
